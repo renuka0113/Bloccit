@@ -1,9 +1,11 @@
+//server.js is our node server
+
 const app = require("./app");
 const http = require("http");
 //const server = http.createServer(app);
 
 const port = normalizePort(process.env.PORT || "3000");
-app.set("port", port);
+app.set("port", port); //what does this do?
 
 const server = http.createServer(app);
 
@@ -14,7 +16,7 @@ server.listen(port);
 function normalizePort(val) {
    const port = parseInt(val, 10);
    if (isNaN(port)) {
-     return val;
+     return val; 
    }
    if (port >= 0) {
      return port;
