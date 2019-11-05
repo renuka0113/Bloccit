@@ -1,6 +1,6 @@
 const request = require("request"); // import the request module  which we will use to make requests to the server during testing
 const server = require("../../src/server");
-const base = "http://localhost:3000/";//base url that we will ue for our requests
+const base = "http://localhost:3000/";//base url that we will used for our requests
 
 describe("routes : static", () => {
 
@@ -20,4 +20,14 @@ describe("routes : static", () => {
     });
 
   });
+
+  describe("GET /marco",() => {
+    it("should return status code 200",() => {
+      request.get(`${base}marco`,(err, res, body) => {   //'${base}marco' means we need to access http://localhost:3000/marco as the url, instead of the base url http://localhost:3000 
+        expect(res.statusCode).toBe(200);
+        expect(res.body).toBe("polo");
+      })
+    })
+  })
+
 });
