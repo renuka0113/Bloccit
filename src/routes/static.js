@@ -8,6 +8,7 @@ const staticController = require("../controllers/staticController");//importing 
 });*/
 
 router.get("/", staticController.index);
+router.get("/about", staticController.index);
 
 router.get("/marco",(req, res, next) => {
   res.send("polo");
