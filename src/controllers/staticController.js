@@ -7,7 +7,7 @@ module.exports = {
   },
 
   about(req, res, next){
-    res.render("static/about",{title:"About Us"  });
+    res.render("static/about");
   }
 
 }//module.exports close. We defined two functions index and about in module.exports.
