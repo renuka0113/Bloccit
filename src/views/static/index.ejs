@@ -7,17 +7,7 @@
 
       <!-- Navigation -->
            <% include ./partials/navbar.ejs %> <!--all the tags and statements under the nav tags have been moved to navbar.ejs in the partials folder and the include tag is to include the navbar.ejs(navbar partial) here -->
-           <h1>Topics</h1>
 
-         <ul class="list-group">
-   <!-- #1 -->
-           <% topics.forEach((topic) => { %>
-   <!-- #2 -->
-             <li class="list-group-item">
-               <a href="/topics/<%= topic.id %>"> <%= topic.title %> </a>
-             </li>
-           <% }) %>
-         </ul>
       <!-- Page Content -->
       <main class="container">
 
