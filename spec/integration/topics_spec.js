@@ -37,5 +37,17 @@ describe("routes : topics", () => {
       });
     });
 
+  });//GET/topics close
+
+  describe("GET /topics/new", () => {
+
+  it("should render a new form",(done) => {
+    request.get(`${base}new`,(err,res,body) => {
+      expect(err).toBeNull;
+      expect(body).toContain("New Topic");
+      done();
+    });
   });
+});//GET /topic/new close
+
 });

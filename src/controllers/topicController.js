@@ -12,5 +12,10 @@ module.exports = {
           res.render("topics/index", { topics, title: "Topics" });
         }
       })
-  }
+  },
+
+new(req,res,next){
+  res.render("topics/new");
 }
+
+}//module.exports close
