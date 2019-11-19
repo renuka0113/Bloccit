@@ -44,6 +44,7 @@ describe("routes : topics", () => {
   it("should render a new form",(done) => {
     request.get(`${base}new`,(err,res,body) => {
       expect(err).toBeNull;
+      console.log(body);
       expect(body).toContain("New Topic");
       done();
     });
