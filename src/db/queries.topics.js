@@ -15,16 +15,16 @@ module.exports = {
     })
   }
 
-  addTopic(newTopic,callback){
-    return Topic.create({
-      title:newTopic.title,
-      description:newTopic.description
-    })//return
+addTopic(newTopic, callback){
+  return Topic.create({
+    title:newTopic.title,
+    description:newTopic.description
+    })//return close
     .then((topic) => {
-      callback(null,topic);
-    })//.then topic
-     .catch((err) => {
-       callback(err);
-     })
-  }//addTopic close
+     callback(null, topic);
+    })//.then close
+    .catch((err) => {
+     callback(err);
+    })//.catch error
+  }//addTopic function close
 }//module.exports close
