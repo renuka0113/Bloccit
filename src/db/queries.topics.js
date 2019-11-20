@@ -14,4 +14,17 @@ module.exports = {
       callback(err);
     })
   }
-}
+
+  addTopic(newTopic,callback){
+    return Topic.create({
+      title:newTopic.title,
+      description:newTopic.description
+    })//return
+    .then((topic) => {
+      callback(null,topic);
+    })//.then topic
+     .catch((err) => {
+       callback(err);
+     })
+  }//addTopic close
+}//module.exports close
