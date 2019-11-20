@@ -66,7 +66,7 @@ describe("routes : topics", () => {
             .then((topic) => {
               expect(res.statusCode).toBe(303);
               expect(topic.title).toBe("blink-182 songs");
-              expect(topic.description).toBe("what's your favourite blink-182 song?");
+              expect(topic.description).toBe("What's your favorite blink-182 song?");
               done();
             })//.then close
              .catch((err) => {

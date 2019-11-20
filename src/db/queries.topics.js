@@ -13,7 +13,7 @@ module.exports = {
     .catch((err) => {
       callback(err);
     })
-  }
+  },
 
 addTopic(newTopic, callback){
   return Topic.create({
