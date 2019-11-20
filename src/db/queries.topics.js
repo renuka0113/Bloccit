@@ -26,5 +26,28 @@ addTopic(newTopic, callback){
     .catch((err) => {
      callback(err);
     })//.catch error
-  }//addTopic function close
+  },//addTopic function close
+
+  getTopic(id, callback){
+    return Topic.findById(id)//in the checkpoint this is findByPk but since it was getting error, I changed it to findById..this has to do with sequelize versions
+    .then((topic) => {
+      callback(null, topic);
+    })//.then close
+    .catch((err)=>{
+       callback(err);
+    })//catch
+  },//getTopic close
+
+  deleteTopic(id, callback){
+      return Topic.destroy({
+        where: {id}
+      })
+      .then((topic) => {
+        callback(null, topic);
+      })
+      .catch((err) => {
+        callback(err);
+      })
+    }
+
 }//module.exports close

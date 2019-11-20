@@ -30,7 +30,28 @@ create(req, res, next){
        res.redirect(303, `/topics/${topic.id}`);
      }
    });
- }
+ },
 
+ show(req,res,next){
+  topicQueries.getTopic(req.params.id,(err,topic)=> {
+    if(err||topic==null){
+      res.redirect(404, "/");
+    }//if close
+    else{
+      res.render("topics/show",{topic});
+    }//else close
+
+  });//getTopic close
+},//show close
+
+ destroy(req, res, next){
+      topicQueries.deleteTopic(req.params.id, (err, topic) => {
+        if(err){
+          res.redirect(500, `/topics/${topic.id}`)
+        } else {
+          res.redirect(303, "/topics")
+        }
+      });
+    }
 
 }//module.exports close

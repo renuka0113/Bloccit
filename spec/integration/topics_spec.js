@@ -76,8 +76,34 @@ describe("routes : topics", () => {
          }//err,res,body close
        )//request.post close
      })//it close
+    })//describe close
 
+    describe("GET/topics/:id", () => {
+      it("should render a view with the selected topic", (done) => {
+        request.get(`${base}${this.topic.id}`,(err, res, body) => {
+          expect(err).toBeNull();
+          expect(body).toContain("JS Frameworks");
+          done();
+        })//request close
+      })//it close
+    })//describe close
 
-  })//describe close
+    describe("POST/topics/:id/destroy",() => {
+     it("should delete the topic with the asociated ID", (done) => {
+     Topic.findAll()
+     .then((topics) => {
+       const topicCountBeforeDelete = topics.length;
+       expect(topicCountBeforeDelete).toBe(1);
+       request.post(`${base}${this.topic.id}/destroy`,(err, res, body) => {
+       Topic.findAll()
+       .then((topics) =. {
+         expect(err).toBeNull();
+         expect(topics.length).toBe(topicCountBeforeDelete-1);
+         done();
+       })//findAll.then
+      })//request.post close
+     })//then close
+    })//it close
+   })//describe close
 
 });
