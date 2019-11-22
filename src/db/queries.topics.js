@@ -51,7 +51,7 @@ addTopic(newTopic, callback){
     },
 
     updateTopic(id, updatedTopic, callback){
-    return Topic.findByPk(id)
+    return Topic.findById(id)
     .then((topic) => {
       if(!topic){
         return callback("Topic not found");

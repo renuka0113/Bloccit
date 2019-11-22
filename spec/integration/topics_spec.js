@@ -88,15 +88,15 @@ describe("routes : topics", () => {
       })//it close
     })//describe close
 
-    describe("POST/topics/:id/destroy",() => {
+  describe("POST/topics/:id/destroy",() => {
      it("should delete the topic with the asociated ID", (done) => {
-     Topic.findAll()
-     .then((topics) => {
+      Topic.findAll()
+      .then((topics) => {
        const topicCountBeforeDelete = topics.length;
-       expect(topicCountBeforeDelete).toBe(1);
-       request.post(`${base}${this.topic.id}/destroy`,(err, res, body) => {
-       Topic.findAll()
-       .then((topics) =. {
+        expect(topicCountBeforeDelete).toBe(1);
+        request.post(`${base}${this.topic.id}/destroy`,(err, res, body) => {
+        Topic.findAll()
+       .then((topics) => {
          expect(err).toBeNull();
          expect(topics.length).toBe(topicCountBeforeDelete-1);
          done();
@@ -108,8 +108,8 @@ describe("routes : topics", () => {
 
    describe("GET /topics/:id/edit", () => {
 
-  it("should render a view with an edit topic form", (done) => {
-    request.get(`${base}${this.topic.id}/edit`, (err, res, body) => {
+      it("should render a view with an edit topic form", (done) => {
+      request.get(`${base}${this.topic.id}/edit`, (err, res, body) => {
       expect(err).toBeNull();
       expect(body).toContain("Edit Topic");
       expect(body).toContain("JS Frameworks");
