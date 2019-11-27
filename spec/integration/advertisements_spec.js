@@ -44,7 +44,9 @@ describe("routes : advertisements", () => {
   describe("GET/advertisements/new", () => {
     it("it should render a new advertisement form", (done) => {
       request.get(`${base}new`,(err, res, body) => {
-
+      expect(err).toBeNull();
+      expect(body).toContain("New Advertisement");
+      done();
       })//get/new
     })//it
   })//describe

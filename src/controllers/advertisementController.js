@@ -9,8 +9,12 @@ advertisementQueries.getAllAdvertisements((err, advertisements) => {
         if(err){
           res.redirect(500, "static/index");
         } else {
-          res.render("advertisements/index", {advertisements});
+          res.render("advertisements/index", { advertisements, title: "Advertisements" });
         }
       })
-  }
+  },
+
+  new(req, res, next){
+     res.render("advertisements/new");
+   }
 }
