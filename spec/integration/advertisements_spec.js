@@ -2,7 +2,7 @@ const request = require("request");
 const server = require("../../src/server");
 const base = "http://localhost:3000/advertisements/";
 const sequelize = require("../../src/db/models/index").sequelize;
-const Topic = require("../../src/db/models").Advertisement;
+const Advertisement = require("../../src/db/models").Advertisement;
 
 describe("routes : advertisements", () => {
   beforeEach((done) => {
@@ -16,11 +16,11 @@ describe("routes : advertisements", () => {
         .then((advertisement) => {
           this.advertisement = advertisement;
           done();
-        })
+        })//.then
         .catch((err) => {
           console.log(err);
           done();
-        });
+        });//catch
 
       });
 
@@ -40,4 +40,13 @@ describe("routes : advertisements", () => {
     });
 
   });
+
+  describe("GET/advertisements/new", () => {
+    it("it should render a new advertisement form", (done) => {
+      request.get(`${base}new`,(err, res, body) => {
+
+      })//get/new
+    })//it
+  })//describe
+
 });
