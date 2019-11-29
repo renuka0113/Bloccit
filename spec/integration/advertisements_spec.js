@@ -42,13 +42,41 @@ describe("routes : advertisements", () => {
   });
 
   describe("GET/advertisements/new", () => {
-    it("it should render a new advertisement form", (done) => {
+    it("should render a new advertisement form", (done) => {
       request.get(`${base}new`,(err, res, body) => {
       expect(err).toBeNull();
       expect(body).toContain("New Advertisement");
       done();
-      })//get/new
-    })//it
-  })//describe
+    });//get/new
+    });//it
+  });//describe
+
+  describe("POST/advertisements/create", () => {
+    const options={
+      url:`{base}create`,
+      form:{
+        title:"javascript books",
+        description:"what is your favourite javascript book?"
+      }//form
+    };//options
+
+    it("should create a new advertisement and redirect",(done) => {
+      request.post(options,
+        (err, res, body) => {
+          Advertisement.findOne({where:{title:"javascript books"}})
+           .then((advertisement) =>{
+             expect(res.statusCode).toBe(303);
+             expect(advertisement.title).toBe("javascript books");
+             expect(advertisement.description).toBe("what is your favourite javascript book?");
+             done();
+           })//then
+           .catch((err) => {
+             console.log(err);
+             done();
+           });
+        }
+      );
+    });//it close
+  });//describe
 
 });
