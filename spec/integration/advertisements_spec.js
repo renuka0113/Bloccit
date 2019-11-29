@@ -79,4 +79,14 @@ describe("routes : advertisements", () => {
     });//it close
   });//describe
 
+  describe("GET/advertisements/:id",() => {
+    it("should render a view with the selected advertisement", (done) => {
+      request.get(`${base}$(this.advertisement.id)`,(err, res, body) => {
+        expect(err).toBeNull();
+        expect(body).toContain("javascript books");
+        (done);
+      });//get
+    });//it
+  });//describe
+
 });

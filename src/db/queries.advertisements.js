@@ -26,5 +26,15 @@ module.exports = {
     .catch((err) =>{
       callback(err);
     })//catch
-  }//addAdvertisement
+  },//addAdvertisement
+
+  getAdvertisement(id, callback){
+    return Advertisement.findById(id)
+     .then((advertisement) => {
+       callback(null, advertisement);
+     })//then
+     .catch((err) => {
+       callback(err);
+     })//catch
+    }
 }

@@ -30,5 +30,17 @@ advertisementQueries.getAllAdvertisements((err, advertisements) => {
          res.redirect(303, `/advertisements/${advertisement.id}`);
        }
      });
-   }//create
+   },//create
+
+   show(req, res, next){
+     advertisementQueries.getAdvertisement(req.params.id,(err, advertisement) => {
+       if(err||advertisement==null){
+         res.redirect(404, "/");
+       } else{
+         res.render("advertisements/show", {advertisement});
+       }
+     });
+   }//show close
+
+
 }
