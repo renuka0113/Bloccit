@@ -89,4 +89,33 @@ describe("routes : advertisements", () => {
     });//it
   });//describe
 
+  describe("POST /advertisements/:id/destroy", () => {
+
+     it("should delete the topic with the associated ID", (done) => {
+
+ //#1
+       Advertisement.findAll()
+       .then((advertisements) => {
+
+ //#2
+         const advertisementCountBeforeDelete = advertisements.length;
+
+         expect(advertisementCountBeforeDelete).toBe(1);
+
+ //#3
+         request.post(`${base}${this.advertisement.id}/destroy`, (err, res, body) => {
+           Advertisement.findAll()
+           .then((advertisements) => {
+             expect(err).toBeNull();
+             expect(advertisements.length).toBe(advertisementCountBeforeDelete - 1);
+             done();
+           })
+
+         });
+       });
+
+     });
+
+   });
+
 });

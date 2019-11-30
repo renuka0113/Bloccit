@@ -40,7 +40,17 @@ advertisementQueries.getAllAdvertisements((err, advertisements) => {
          res.render("advertisements/show", {advertisement});
        }
      });
-   }//show close
+   },//show close
+
+   destroy(req, res, next){
+     advertisementQueries.deleteAdvertisement(req.params.id, (err, topic) => {
+       if(err){
+         res.redirect(500, `/advertisements/${advertisement.id}`)
+       } else {
+         res.redirect(303, "/advertisements")
+       }
+     });
+   }
 
 
 }
