@@ -25,7 +25,7 @@ advertisementQueries.getAllAdvertisements((err, advertisements) => {
      };//let variable
      advertisementQueries.addAdvertisement(newAdvertisement,(err, advertisement) => {
        if(err){
-         res.redirect(500, "advertisements/new");
+         res.redirect(500, "/advertisements/new");
        } else{
          res.redirect(303, `/advertisements/${advertisement.id}`);
        }
