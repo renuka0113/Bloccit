@@ -131,4 +131,32 @@ describe("routes : advertisements", () => {
 
 });
 
+describe("POST /advertisements/:id/update", () => {
+
+    it("should update the advertisement with the given values", (done) => {
+       const options = {
+          url: `${base}${this.advertisement.id}/update`,
+          form: {
+            title: "coding bootcamps",
+            description: "There are a lot of them"
+          }
+        };
+//#1
+        request.post(options,
+          (err, res, body) => {
+
+          expect(err).toBeNull();
+//#2
+          Advertisement.findOne({
+            where: { id: this.advertisement.id }
+          })
+          .then((advertisement) => {
+            expect(advertisement.title).toBe("coding bootcamps");
+            done();
+          });
+        });
+    });
+
+  });
+
 });

@@ -60,7 +60,21 @@ advertisementQueries.getAllAdvertisements((err, advertisements) => {
         res.render("advertisements/edit", {advertisement});
       }
     });
-  }
+  },
+
+  update(req, res, next){
+
+//#1
+  advertisementQueries.updateAdvertisement(req.params.id, req.body, (err, advertisement) => {
+
+//#2
+     if(err || advertisement == null){
+       res.redirect(404, `/advertisements/${req.params.id}/edit`);
+     } else {
+       res.redirect(`/advertisements/${advertisement.id}`);
+     }
+   });
+ }
 
 
 }
