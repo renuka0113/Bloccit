@@ -67,7 +67,7 @@ describe("routes : advertisements", () => {
           console.log(res);
           Advertisement.findOne({where:{title:"javascript books"}})
            .then((advertisement) =>{
-             expect(advertisement.statusCode).toBe(303);
+             expect(res.statusCode).toBe(303);
              expect(advertisement.title).toBe("javascript books");
              expect(advertisement.description).toBe("what is your favourite javascript book?");
              done();
