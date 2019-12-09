@@ -50,7 +50,7 @@ module.exports = {
      })
    },
 
-   updateTopic(id, updatedTopic, callback){
+   updateAdvertisement(id, updatedAdvertisement, callback){
     return Advertisement.findById(id)
     .then((advertisement) => {
       if(!advertisement){
