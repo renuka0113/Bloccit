@@ -63,9 +63,11 @@ describe("routes : advertisements", () => {
     it("should create a new advertisement and redirect",(done) => {
       request.post(options,
         (err, res, body) => {
+          console.log(Advertisement);
+          console.log(res);
           Advertisement.findOne({where:{title:"javascript books"}})
            .then((advertisement) =>{
-             expect(res.statusCode).toBe(303);
+             expect(advertisement.statusCode).toBe(303);
              expect(advertisement.title).toBe("javascript books");
              expect(advertisement.description).toBe("what is your favourite javascript book?");
              done();
