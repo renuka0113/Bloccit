@@ -36,7 +36,7 @@ describe("Post", () => {
     });
 
   });
-});
+//});
 
 describe("#create()", () => {
 
@@ -110,3 +110,5 @@ describe("#create()", () => {
    });
 
  });
+
+});
