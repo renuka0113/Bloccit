@@ -53,7 +53,7 @@ describe("routes : advertisements", () => {
 
   describe("POST/advertisements/create", () => {
     const options={
-      url:`{base}create`,
+      url:`${base}create`,
       form:{
         title:"javascript books",
         description:"what is your favourite javascript book?"
@@ -62,9 +62,11 @@ describe("routes : advertisements", () => {
 
     it("should create a new advertisement and redirect",(done) => {
       request.post(options,
+      //console.log(err);
         (err, res, body) => {
-          console.log(Advertisement);
-          console.log(res);
+        //  console.log(err);
+        //  console.log(Advertisement);
+          //console.log(res);
           Advertisement.findOne({where:{title:"javascript books"}})
            .then((advertisement) =>{
              expect(res.statusCode).toBe(303);
@@ -73,7 +75,7 @@ describe("routes : advertisements", () => {
              done();
            })//then
            .catch((err) => {
-             console.log(err);
+             //console.log(err);
              done();
            });
         }

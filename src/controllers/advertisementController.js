@@ -26,13 +26,14 @@ advertisementQueries.getAllAdvertisements((err, advertisements) => {
        title:req.body.title,
        description:req.body.description
      };//let variable
-     console.log('Inside create advertisement')
+    // console.log('Inside create advertisement')
      advertisementQueries.addAdvertisement(newAdvertisement,(err, advertisement) => {
        if(err){
-         console.log('Inside create advertisement error thrown')
+         //console.log(err);
+        // console.log('Inside create advertisement error thrown')
          res.redirect(500, "/advertisements/new");
        } else{
-          console.log('Inside create advertisement successfull')
+        //  console.log('Inside create advertisement successfull')
          res.redirect(303, `/advertisements/${advertisement.id}`);
        }
      });
