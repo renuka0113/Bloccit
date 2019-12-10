@@ -52,7 +52,7 @@ advertisementQueries.getAllAdvertisements((err, advertisements) => {
 
    destroy(req, res, next){
      console.log("inside destroy function");
-     advertisementQueries.deleteAdvertisement(req.params.id, (err, topic) => {
+     advertisementQueries.deleteAdvertisement(req.params.id, (err, advertisement) => {
        if(err){
          res.redirect(500, `/advertisements/${advertisement.id}`)
        } else {
