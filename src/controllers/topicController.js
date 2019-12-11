@@ -1,9 +1,9 @@
- const topicQueries = require("../db/queries.topics.js");
+const topicQueries = require("../db/queries.topics.js");
 module.exports = {
-  index(req, res, next){
+  index(req, res, next){ //creating a function called index
   //  res.send("TODO: list all topics");
   topicQueries.getAllTopics((err, topics) => {
-  console.log(err);
+//  console.log(err);
 //#3
         if(err){
           res.redirect(500, "static/index");
