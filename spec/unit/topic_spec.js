@@ -84,32 +84,6 @@ describe("#create()", () => {
       })
     });
 
-    describe("#setPosts()", () => {
-
-    it("should associate a topic and a post together", (done) => {
-
-// #1
-     Topic.create({
-       title: "Challenges of interstellar travel",
-       description: "1. The Wi-Fi is terrible"
-     })
-     .then((newTopic) => {
-
-// #2
-       expect(this.post.topicId).toBe(this.topic.id);
-// #3
-       this.post.setTopic(newTopic)
-       .then((post) => {
-// #4
-         expect(post.topicId).toBe(newTopic.id);
-         done();
-
-       });
-     })
-   });
-
- });
-
     describe("#getPosts()", () => {
 
         it("should return the associated posts", (done) => {
