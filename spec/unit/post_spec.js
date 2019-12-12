@@ -1,6 +1,6 @@
 const sequelize = require("../../src/db/models/index").sequelize;
 const Topic = require("../../src/db/models").Topic;
- const Post = require("../../src/db/models").Post;
+const Post = require("../../src/db/models").Post;
 
 describe("Post", () => {
 
@@ -72,7 +72,11 @@ describe("#create()", () => {
        // the code in this block will not be evaluated since the validation error
        // will skip it. Instead, we'll catch the error in the catch block below
        // and set the expectations there
-
+       //notce that in this testcase we are creating a post only with the title, without a body and a topic id associated with it
+       //Post.create returns a promise, if its successful then it enters the .then block. In this case the post its creating is not a ideal post, so it will
+       //not create a successful entry in the database(because we said the post must have body and assigned topic too)
+       //so since its not successful, it never enters the then block, it directly enters the err block and there
+       //we throw the error messages that post doesnt have a body and doesnt have a topicId
         done();
 
       })
@@ -91,8 +95,7 @@ describe("#create()", () => {
 
 // #1
      Topic.create({
-       title: "Challenges of interstellar travel",
-       description: "1. The Wi-Fi is terrible"
+https://github.com/renuka0113/bloc-chat.git        description: "1. The Wi-Fi is terrible"
      })
      .then((newTopic) => {
 
