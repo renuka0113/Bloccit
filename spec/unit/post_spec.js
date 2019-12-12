@@ -95,7 +95,8 @@ describe("#create()", () => {
 
 // #1
      Topic.create({
-https://github.com/renuka0113/bloc-chat.git        description: "1. The Wi-Fi is terrible"
+       title: "Challenges of interstellar travel",
+       description: "1. The Wi-Fi is terrible"
      })
      .then((newTopic) => {
 
