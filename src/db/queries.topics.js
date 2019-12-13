@@ -1,4 +1,5 @@
 const Topic = require("./models").Topic;
+ const Post = require("./models").Post; //include the Post model so that we can use it
 
 module.exports = {
 
@@ -33,7 +34,14 @@ addTopic(newTopic, callback){
   },//addTopic function close
 
   getTopic(id, callback){
-    return Topic.findById(id)//in the checkpoint this is findByPk but since it was getting error, I changed it to findById..this has to do with sequelize versions
+    //return Topic.findById(id)//(earlier id was the only parameter) in the checkpoint this is findByPk but since it was getting error, I changed it to findById..this has to do with sequelize versions
+     return Topic.findById(id,{
+
+     include:[{
+       model:Post,
+       as:"posts"
+     }]
+     })
     .then((topic) => {
       callback(null, topic);
     })//.then close
