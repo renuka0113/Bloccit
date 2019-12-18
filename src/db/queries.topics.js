@@ -54,7 +54,7 @@ addTopic(newTopic, callback){
     })//.then close
     .catch((err)=>{
        callback(err);
-    }),//catch
+    })//catch
 
   },//getTopic close
 
