@@ -1,7 +1,17 @@
-//const Post = require("./models").Post;
-const Topic = require("./models").Topic;
-const Post = require("./models").Flair;
-
+const Flair = require("./models").Flair;
 
 module.exports = {
+
+//#1
+  getAllFlairs(callback){
+    return Flair.findAll()
+
+//#2
+    .then((flairs) => {
+      callback(null, flairs);
+    })
+    .catch((err) => {
+      callback(err);
+    })
+  }
 }

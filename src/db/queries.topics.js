@@ -42,10 +42,6 @@ addTopic(newTopic, callback){
        {
        model:Post,
        as:"posts"
-     },
-      {
-     model:Flair,
-     as:"flairs"
      }
    ]//include
   })

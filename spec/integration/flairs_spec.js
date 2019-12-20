@@ -1,33 +1,20 @@
 const request = require("request");
 const server = require("../../src/server");
-const base = "http://localhost:3000/topics";
-
+const base = "http://localhost:3000/flairs/";
 const sequelize = require("../../src/db/models/index").sequelize;
-const Topic = require("../../src/db/models").Topic;
-const Post = require("../../src/db/models").Post;
 const Flair = require("../../src/db/models").Flair;
 
 describe("routes : flairs", () => {
 
-  beforeEach((done) => {
-    this.topic;
-    this.flair;
+//#2
+    beforeEach((done) => {
+      this.flair;
+      sequelize.sync({force: true}).then((res) => {
 
-    sequelize.sync({force: true}).then((res) => {
-
-//#1
-      Topic.create({
-        title: "Winter activities in Austin",
-        description: "Post things to do in winter in Austin."
-      })
-      .then((topic) => {
-        this.topic = topic;
-
-        Flair.create({
-          name: "skating",
-          color: "blue",
-          topicId: this.topic.id
-        })
+       Flair.create({
+         name: "rain",
+         color: "pink"
+       })
         .then((flair) => {
           this.flair = flair;
           done();
@@ -36,21 +23,26 @@ describe("routes : flairs", () => {
           console.log(err);
           done();
         });
+
+      });
+
+  //  });
+describe("routes : flairs", () => {
+
+  describe("GET /flairs", () => {
+
+    it("should return a status code 200 and all flairs", (done) => {
+      request.get(base, (err, res, body) => {
+        expect(res.statusCode).toBe(200);
+        expect(err).toBeNull();
+      //  expect(body).toContain("Flairs");not expecting body to contain Flairs and thats why I am not passing title: "Flairs"
+      //in flairController at res.render("flairs/index", { flairs }); like we did in the case of Topics
+        expect(body).toContain("rainy");
+        done();
       });
     });
 
   });
+});
 
-  describe("GET /topics/:topicId/flairs/new", () => {
-
-   it("should render a new flair form", (done) => {
-     request.get(`${base}/${this.topic.id}/flairs/new`, (err, res, body) => {
-       expect(err).toBeNull();
-       expect(body).toContain("New Flair");
-       done();
-     });
-   });
-
- });
-
-});//outermost describe
+});//beforeEach done close

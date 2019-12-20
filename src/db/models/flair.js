@@ -11,17 +11,10 @@ module.exports = (sequelize, DataTypes) => {
        type: DataTypes.STRING,
        allowNull: false
      },
-     topicId: {
-       type: DataTypes.INTEGER,
-       allowNull: false
-     }
-  }, {});
+    }, {});
   Flair.associate = function(models) {
     // associations can be defined here
-    Flair.belongsTo(models.Topic, {
-       foreignKey: "topicId",
-       onDelete: "CASCADE"
-     });
+    //there are no associations between Flair and other objects
   };
   return Flair;
 };

@@ -1,13 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-const advertisementController = require("../controllers/advertisementController")
- router.get("/advertisements/new", advertisementController.new);
+const flairController = require("../controllers/flairController")
 
-router.get("/advertisements", advertisementController.index);
-router.post("/advertisements/create", advertisementController.create);
-router.get("/advertisements/:id", advertisementController.show);
-router.post("/advertisements/:id/destroy", advertisementController.destroy);
-router.get("/advertisements/:id/edit", advertisementController.edit);
-router.post("/advertisements/:id/update", advertisementController.update);
+router.get("/flair", flairController.index);
+
 module.exports = router;
