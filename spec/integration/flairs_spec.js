@@ -26,8 +26,9 @@ describe("routes : flairs", () => {
 
       });
 
+    });//beforeEach
+
   //  });
-describe("routes : flairs", () => {
 
   describe("GET /flairs", () => {
 
@@ -35,14 +36,10 @@ describe("routes : flairs", () => {
       request.get(base, (err, res, body) => {
         expect(res.statusCode).toBe(200);
         expect(err).toBeNull();
-      //  expect(body).toContain("Flairs");not expecting body to contain Flairs and thats why I am not passing title: "Flairs"
-      //in flairController at res.render("flairs/index", { flairs }); like we did in the case of Topics
-        expect(body).toContain("rainy");
+        expect(body).toContain("rain");
         done();
       });
     });
 
   });
-});
-
-});//beforeEach done close
+});//describe routes:flairs
