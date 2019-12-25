@@ -13,5 +13,5 @@ module.exports = {
     .catch((err) => {
       callback(err);
     })
-  }
-}
+  }//getAllFlairs close
+}//module.exports close
