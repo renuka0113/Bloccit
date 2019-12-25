@@ -50,5 +50,15 @@ create(req, res, next){
          res.redirect(303, "/flairs")
        }
      });
+   },
+
+   edit(req, res, next){
+     flairQueries.getFlair(req.params.id, (err, flair) => {
+       if(err ||flair == null){
+         res.redirect(404, "/");
+       } else {
+         res.render("flairs/edit", {flair});
+       }
+     });
    }
 }//module.exports close

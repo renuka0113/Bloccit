@@ -124,4 +124,17 @@ describe("POST /flairs/create", () => {
       });
 
   });
+
+  describe("GET /flairs/:id/edit", () => {
+
+     it("should render a view with an edit flair form", (done) => {
+       request.get(`${base}${this.flair.id}/edit`, (err, res, body) => {
+         expect(err).toBeNull();
+         expect(body).toContain("Edit Flair");
+         expect(body).toContain("rain");
+         done();
+       });
+     });
+
+   });
 });//describe routes:flairs
