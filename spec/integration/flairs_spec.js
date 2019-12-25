@@ -84,4 +84,16 @@ describe("POST /flairs/create", () => {
         });
     });
   });
+
+  describe("GET /flairs/:id", () => {
+
+     it("should render a view with the selected flair", (done) => {
+       request.get(`${base}${this.flair.id}`, (err, res, body) => {
+         expect(err).toBeNull();
+         expect(body).toContain("rain");
+         done();
+       });
+     });
+
+   });
 });//describe routes:flairs

@@ -30,5 +30,15 @@ create(req, res, next){
          res.redirect(303, `/flairs/${flair.id}`);
        }
      });
+   },
+
+   show(req, res, next){
+     flairQueries.getFlair(req.params.id, (err, flair) => {
+        if(err || flair == null){
+         res.redirect(404, "/");
+       } else {
+         res.render("flairs/show", {flair});
+       }
+     });
    }
 }//module.exports close
