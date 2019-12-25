@@ -13,5 +13,18 @@ module.exports = {
     .catch((err) => {
       callback(err);
     })
-  }//getAllFlairs close
+  },//getAllFlairs close
+
+  addFlair(newFlair, callback){
+     return Flair.create({
+       name: newFlair.name,
+       color: newFlair.color
+     })
+     .then((flair) => {
+       callback(null, flair);
+     })
+     .catch((err) => {
+       callback(err);
+     })
+   }//addFlair
 }//module.exports close

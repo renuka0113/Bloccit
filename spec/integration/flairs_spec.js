@@ -52,5 +52,36 @@ describe("routes : flairs", () => {
       done();
     });
   });
-});//GET /topic/new close
+});//GET /flair/new close
+
+describe("POST /flairs/create", () => {
+      const options = {
+        url: `${base}create`,
+        form: {
+         name: "happy",
+          color: "yellow"
+        }
+      };
+
+      it("should create a new flair and redirect", (done) => {
+
+//#1
+        request.post(options,
+
+//#2
+          (err, res, body) => {
+            Flair.findOne({where: {name: "happy"}})
+            .then((flair) => {
+              expect(res.statusCode).toBe(303);
+              expect(flair.name).toBe("happy");
+              expect(flair.color).toBe("yellow");
+              done();
+            })
+            .catch((err) => {
+              console.log(err);
+              done();
+            });
+        });
+    });
+  });
 });//describe routes:flairs
