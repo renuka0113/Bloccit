@@ -40,6 +40,17 @@ describe("routes : flairs", () => {
         done();
       });
     });
-
   });
+
+  describe("GET /flairs/new", () => {
+
+  it("should render a new form",(done) => {
+    request.get(`${base}new`,(err,res,body) => {
+      expect(err).toBeNull;
+    //  console.log(body); was done for resolving a error
+      expect(body).toContain("New Flair");
+      done();
+    });
+  });
+});//GET /topic/new close
 });//describe routes:flairs

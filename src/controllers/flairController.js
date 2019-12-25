@@ -8,9 +8,13 @@ module.exports = {
         if(err){
           res.redirect(500, "static/index");
         } else {
-          res.render("flairs/index", {flairs});
+          res.render("flairs/index", {flairs, title: "Flairs"});
           //res.render("flairs/index", { flairs, title: "Flairs"  });
         }
       })
-  }//index
+  },//index
+
+  new(req, res, next){
+      res.render("flairs/new");
+    }
 }//module.exports close
