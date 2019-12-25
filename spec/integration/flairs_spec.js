@@ -137,4 +137,32 @@ describe("POST /flairs/create", () => {
      });
 
    });
+
+   describe("POST /flairs/:id/update", () => {
+
+     it("should update the flair with the given values", (done) => {
+        const options = {
+           url: `${base}${this.flair.id}/update`,
+           form: {
+             name: "rain",
+             color: "pink"
+           }
+         };
+//#1
+         request.post(options,
+           (err, res, body) => {
+
+           expect(err).toBeNull();
+//#2
+          Flair.findOne({
+             where: { id: this.flair.id }
+           })
+           .then((flair) => {
+             expect(flair.name).toBe("rain");
+             done();
+           });
+         });
+     });
+
+   });
 });//describe routes:flairs

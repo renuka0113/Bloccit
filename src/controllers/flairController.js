@@ -60,5 +60,19 @@ create(req, res, next){
          res.render("flairs/edit", {flair});
        }
      });
-   }
+   },
+
+   update(req, res, next){
+
+//#1
+    flairQueries.updateFlair(req.params.id, req.body, (err, topic) => {
+
+//#2
+      if(err || flair == null){
+        res.redirect(404, `/flairs/${req.params.id}/edit`);
+      } else {
+        res.redirect(`/flairs/${flair.id}`);
+      }
+    });
+  }
 }//module.exports close
