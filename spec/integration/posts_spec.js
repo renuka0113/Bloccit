@@ -137,8 +137,9 @@ describe("routes : posts", () => {
       request.post({
         url: `${base}/${this.topic.id}/posts/${this.post.id}/update`,
         form: {
-          title: "Snowman Building Competition",
-          body: "I really enjoy the funny hats on them."
+          title: "Snowman Building Competition"
+        //  body: "I really enjoy the funny hats on them."
+          body: "I love watching them melt slowly"
         }
       }, (err, res, body) => {
         expect(res.statusCode).toBe(302);
@@ -150,7 +151,8 @@ describe("routes : posts", () => {
         const options = {
           url: `${base}/${this.topic.id}/posts/${this.post.id}/update`,
           form: {
-            title: "Snowman Building Competition"
+            title: "Snowman Building Competition",
+            body: "I really enjoy the funny hats on them"
           }
         };
         request.post(options,
