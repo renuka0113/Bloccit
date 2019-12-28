@@ -1,5 +1,6 @@
 const Topic = require("./models").Topic;
  const Post = require("./models").Post; //include the Post model so that we can use it
+ const Flair = require("./models").Flair;
 
 module.exports = {
 
@@ -37,17 +38,20 @@ addTopic(newTopic, callback){
     //return Topic.findById(id)//(earlier id was the only parameter) in the checkpoint this is findByPk but since it was getting error, I changed it to findById..this has to do with sequelize versions
      return Topic.findById(id,{
 
-     include:[{
+     include:[
+       {
        model:Post,
        as:"posts"
-     }]
-     })
+     }
+   ]//include
+  })
     .then((topic) => {
       callback(null, topic);
     })//.then close
     .catch((err)=>{
        callback(err);
     })//catch
+
   },//getTopic close
 
   deleteTopic(id, callback){
