@@ -3,13 +3,14 @@ const router = express.Router();
 
 const topicController = require("../controllers/topicController"); //defining a constant variable called topicController. The value of this variable is
 //the path of topicController
+const validation = require("./validation");
 
 router.get("/topics", topicController.index); //for the route /topics, call the function index from topicController (the variable topicController is defined above)
 router.get("/topics/new", topicController.new);
-router.post("/topics/create", topicController.create);
+router.post("/topics/create", validation.validateTopics, topicController.create);
 router.get("/topics/:id", topicController.show);
 router.post("/topics/:id/destroy", topicController.destroy);
 router.get("/topics/:id/edit", topicController.edit);
-router.post("/topics/:id/update", topicController.update);
+router.post("/topics/:id/update", validation.validateTopics, topicController.update);
 
 module.exports = router;
