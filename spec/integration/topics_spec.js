@@ -88,7 +88,7 @@ describe("routes : topics", () => {
         }
       };
 
-      request.topic(options,
+      request.post(options,
         (err, res, body) => {
 
 //#2
