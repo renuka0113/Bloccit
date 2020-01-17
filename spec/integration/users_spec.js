@@ -87,7 +87,7 @@ describe("routes : users", () => {
       );
     });
 
-  });
+  });//describe
 
   describe("GET /users/sign_in", () => {
 
