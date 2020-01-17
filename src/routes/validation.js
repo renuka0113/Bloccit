@@ -46,7 +46,7 @@ module.exports = {
     } else {
       return next();
     }
-  }//validateTopics close
+  },//validateTopics close
 
   validateUsers(req, res, next) {
      if(req.method === "POST") {

@@ -1,11 +1,11 @@
 const userQueries = require("../db/queries.users.js");
- const passport = require("passport");
+const passport = require("passport");
 
 
 module.exports = {
   signUp(req, res, next){
     res.render("users/sign_up");
-  }
+  },
 
   create(req, res, next){
 //#1
@@ -46,6 +46,10 @@ module.exports = {
          res.redirect("/");
        }
      })
-   }//signIn
+   },//signIn
+
+   signInForm(req, res, next){
+    res.render("users/sign_in");
+  }
 
 }//module exports
