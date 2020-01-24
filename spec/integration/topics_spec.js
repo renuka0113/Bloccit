@@ -76,7 +76,35 @@ describe("routes : topics", () => {
          }//err,res,body close
        )//request.post close
      })//it close
-    })//describe close
+
+     it("should not create a new topic that fails validations", (done) => {
+      const options = {
+        url: `${base}/${this.topic.id}/create`,
+        form: {
+
+//#1
+          title: "a",
+          body: "b"
+        }
+      };
+
+      request.post(options,
+        (err, res, body) => {
+
+//#2
+          Topic.findOne({where: {title: "a"}})
+          .then((topic) => {
+              expect(topic).toBeNull();
+              done();
+          })
+          .catch((err) => {
+            console.log(err);
+            done();
+          });
+        }
+      );
+    });
+  })//describe close
 
     describe("GET/topics/:id", () => {
       it("should render a view with the selected topic", (done) => {

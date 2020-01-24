@@ -36,7 +36,7 @@ addTopic(newTopic, callback){
 
   getTopic(id, callback){
     //return Topic.findById(id)//(earlier id was the only parameter) in the checkpoint this is findByPk but since it was getting error, I changed it to findById..this has to do with sequelize versions
-     return Topic.findById(id,{
+     return Topic.findByPk(id,{
 
      include:[
        {
@@ -67,7 +67,7 @@ addTopic(newTopic, callback){
     },
 
     updateTopic(id, updatedTopic, callback){
-    return Topic.findById(id)
+    return Topic.findByPk(id)
     .then((topic) => {
       if(!topic){
         return callback("Topic not found");
