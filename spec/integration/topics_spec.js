@@ -5,7 +5,7 @@ const sequelize = require("../../src/db/models/index").sequelize;
 const Topic = require("../../src/db/models").Topic;
 const User = require("../../src/db/models").User;
 
-describe("routes : topics", () => {
+describe("routes : topics", () => { //this ends at the very last
   beforeEach((done) => {
       this.topic;
       sequelize.sync({force: true}).then((res) => {
@@ -25,7 +25,7 @@ describe("routes : topics", () => {
 
       });
 
-    });
+    });//beforeEach close
 
 
 
@@ -55,7 +55,7 @@ describe("routes : topics", () => {
                 );
               });
             });
-describe("GET /topics", () => {
+    describe("GET /topics", () => {
 
     it("should return a status code 200 and all topics", (done) => {
       request.get(base, (err, res, body) => {
@@ -202,6 +202,7 @@ describe("POST /topics/:id/update", () => {
          });
      });
    });
+ });//admin user context ends here
 
 
 
@@ -364,7 +365,5 @@ describe("POST /topics/:id/update", () => {
                 });
               });
             });
-});
-});
-
-});//final
+         });//user context ends here
+      });//describe routes topics ends here

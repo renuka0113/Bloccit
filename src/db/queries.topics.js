@@ -2,6 +2,8 @@ const Topic = require("./models").Topic;
  const Post = require("./models").Post; //include the Post model so that we can use it
  const Flair = require("./models").Flair;
 
+
+
 module.exports = {
 
 //#1
