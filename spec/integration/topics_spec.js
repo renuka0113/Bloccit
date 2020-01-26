@@ -27,6 +27,8 @@ describe("routes : topics", () => {
 
     });
 
+
+
     // #1: define the admin user context
        describe("admin user performing CRUD actions for Topic", () => {
 
@@ -201,6 +203,8 @@ describe("POST /topics/:id/update", () => {
      });
    });
 
+
+
    // #3: define the member user context
    describe("member user performing CRUD actions for Topic", () => {
 
@@ -360,6 +364,7 @@ describe("POST /topics/:id/update", () => {
                 });
               });
             });
-
+});
+});
 
 });//final
