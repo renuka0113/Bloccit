@@ -18,7 +18,7 @@ describe("routes : advertisements", () => {
           done();
         })//.then
         .catch((err) => {
-          console.log(err);
+        //  console.log(err);
           done();
         });//catch
 

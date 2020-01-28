@@ -5,7 +5,7 @@ const sequelize = require("../../src/db/models/index").sequelize;
 const Topic = require("../../src/db/models").Topic;
 const User = require("../../src/db/models").User;
 
-describe("routes : topics", () => { //this ends at the very last
+describe("routes : topics", () => { //this closes at the very last
   beforeEach((done) => {
       this.topic;
       sequelize.sync({force: true}).then((res) => {
@@ -19,7 +19,7 @@ describe("routes : topics", () => { //this ends at the very last
           done();
         })
         .catch((err) => {
-          console.log(err);
+        //  console.log(err);
           done();
         });
 
@@ -54,7 +54,7 @@ describe("routes : topics", () => { //this ends at the very last
                   }
                 );
               });
-            });
+            });//admin beforeEach close
     describe("GET /topics", () => {
 
     it("should return a status code 200 and all topics", (done) => {
@@ -74,7 +74,7 @@ describe("routes : topics", () => { //this ends at the very last
   it("should render a new form",(done) => {
     request.get(`${base}new`,(err,res,body) => {
       expect(err).toBeNull;
-    //  console.log(body); was done for resolving a error
+    //  console.log(body);
       expect(body).toContain("New Topic");
       done();
     });
@@ -100,7 +100,7 @@ describe("routes : topics", () => { //this ends at the very last
               done();
             })//.then close
              .catch((err) => {
-               console.log(err);
+              // console.log(err);
                done();
              });//catch close
          }//err,res,body close
@@ -174,7 +174,7 @@ describe("routes : topics", () => { //this ends at the very last
       done();
     });
   });
-});
+});//describe close
 
 describe("POST /topics/:id/update", () => {
 
@@ -196,6 +196,7 @@ describe("POST /topics/:id/update", () => {
              where: { id: this.topic.id }
            })
            .then((topic) => {
+            // console.log(topic);
              expect(topic.title).toBe("JavaScript Frameworks");
              done();
            });
@@ -221,7 +222,7 @@ describe("POST /topics/:id/update", () => {
            done();
          }
        );
-     });
+     });//beforeEach
      describe("GET /topics", () => {
 
        it("should return a status code 200 and all topics", (done) => {
@@ -267,7 +268,7 @@ describe("POST /topics/:id/update", () => {
                done();
              })//.then close
               .catch((err) => {
-                console.log(err);
+              //  console.log(err);
                 done();
               });//catch close
           }//err,res,body close
@@ -294,7 +295,7 @@ describe("POST /topics/:id/update", () => {
                done();
            })
            .catch((err) => {
-             console.log(err);
+          //   console.log(err);
              done();
            });
          }
