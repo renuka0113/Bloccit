@@ -47,7 +47,7 @@ Topic.create({
 
   describe("GET /topics/:topicId/posts/new", () => {
 
-    xit("should render a new post form", (done) => {
+    it("should render a new post form", (done) => {
       request.get(`${base}/${this.topic.id}/posts/new`, (err, res, body) => {
         expect(err).toBeNull();
         expect(body).toContain("New Post");
@@ -59,7 +59,7 @@ Topic.create({
 
   describe("POST /topics/:topicId/posts/create", () => {
 
-   xit("should create a new post and redirect", (done) => {
+   it("should create a new post and redirect", (done) => {
       const options = {
         url: `${base}/${this.topic.id}/posts/create`,
         form: {
@@ -86,7 +86,7 @@ Topic.create({
       );
     });
 
-    xit("should not create a new post that fails validations", (done) => {
+    it("should not create a new post that fails validations", (done) => {
        const options = {
          url: `${base}/${this.topic.id}/posts/create`,
          form: {
@@ -117,7 +117,7 @@ Topic.create({
 
  describe("GET /topics/:topicId/posts/:id", () => {
 
-    xit("should render a view with the selected post", (done) => {
+    it("should render a view with the selected post", (done) => {
       request.get(`${base}/${this.topic.id}/posts/${this.post.id}`, (err, res, body) => {
         expect(err).toBeNull();
         expect(body).toContain("Snowball Fighting");
@@ -129,7 +129,7 @@ Topic.create({
 
   describe("POST /topics/:topicId/posts/:id/destroy", () => {
 
-     xit("should delete the post with the associated ID", (done) => {
+     it("should delete the post with the associated ID", (done) => {
 
 //#1
        expect(this.post.id).toBe(1);
@@ -153,7 +153,7 @@ Topic.create({
 
    describe("GET /topics/:topicId/posts/:id/edit", () => {
 
-     xit("should render a view with an edit post form", (done) => {
+     it("should render a view with an edit post form", (done) => {
        request.get(`${base}/${this.topic.id}/posts/${this.post.id}/edit`, (err, res, body) => {
          expect(err).toBeNull();
          expect(body).toContain("Edit Post");
@@ -166,7 +166,7 @@ Topic.create({
 
    describe("POST /topics/:topicId/posts/:id/update", () => {
 
-    xit("should return a status code 302", (done) => {
+    it("should return a status code 302", (done) => {
       request.post({
         url: `${base}/${this.topic.id}/posts/${this.post.id}/update`,
         form: {
@@ -180,7 +180,7 @@ Topic.create({
       });
     });
 
-    xit("should update the post with the given values", (done) => {
+    it("should update the post with the given values", (done) => {
         const options = {
           url: `${base}/${this.topic.id}/posts/${this.post.id}/update`,
           form: {

@@ -138,7 +138,7 @@ create(req, res, next){
 
   update(req, res, next){
 //#1
-    topicQueries.updateTopic(req.params.id, req.body, (err, topic) => {
+    topicQueries.updateTopic(req, req.body, (err, topic) => {
 
 //#2
       if(err || topic == null){

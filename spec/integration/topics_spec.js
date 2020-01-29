@@ -239,11 +239,11 @@ describe("POST /topics/:id/update", () => {
 
      describe("GET /topics/new", () => {
 
-     it("should render a new form",(done) => {
+     it("should redirectto topics view",(done) => {
        request.get(`${base}new`,(err,res,body) => {
          expect(err).toBeNull;
        //  console.log(body); was done for resolving a error
-         expect(body).toContain("New Topic");
+         expect(body).toContain("Topics");
          done();
        });
      });
@@ -257,14 +257,12 @@ describe("POST /topics/:id/update", () => {
            description: "What's your favorite blink-182 song?"
          }//closing form
        };//closing the variable options
-      it("should create a new topic and redirect", (done) => {
+      it("should not create a new topic", (done) => {
         request.post(options,
           (err,res,body) =>{
             Topic.findOne({where:{title:"blink-182 songs"}})
              .then((topic) => {
-               expect(res.statusCode).toBe(303);
-               expect(topic.title).toBe("blink-182 songs");
-               expect(topic.description).toBe("What's your favorite blink-182 song?");
+               expect(topic).toBeNull();// no topic should be returned
                done();
              })//.then close
               .catch((err) => {
@@ -313,7 +311,7 @@ describe("POST /topics/:id/update", () => {
         })//it close
       })//describe close
       describe("POST/topics/:id/destroy",() => {
-         it("should delete the topic with the asociated ID", (done) => {
+         it("should not delete the topic with the asociated ID", (done) => {
           Topic.findAll()
           .then((topics) => {
            const topicCountBeforeDelete = topics.length;
@@ -322,7 +320,8 @@ describe("POST /topics/:id/update", () => {
             Topic.findAll()
            .then((topics) => {
              expect(err).toBeNull();
-             expect(topics.length).toBe(topicCountBeforeDelete-1);
+             //confirm that no topics are deleted
+             expect(topics.length).toBe(topicCountBeforeDelete);
              done();
            })//findAll.then
           })//request.post close
@@ -331,10 +330,10 @@ describe("POST /topics/:id/update", () => {
        })//describe close
        describe("GET /topics/:id/edit", () => {
 
-          it("should render a view with an edit topic form", (done) => {
+          it("should not render a view with an edit topic form", (done) => {
           request.get(`${base}${this.topic.id}/edit`, (err, res, body) => {
           expect(err).toBeNull();
-          expect(body).toContain("Edit Topic");
+          expect(body).not.toContain("Edit Topic");
           expect(body).toContain("JS Frameworks");
           done();
         });
@@ -343,7 +342,7 @@ describe("POST /topics/:id/update", () => {
 
        describe("POST /topics/:id/update", () => {
 
-            it("should update the topic with the given values", (done) => {
+            it("should not update the topic with the given values", (done) => {
                const options = {
                   url: `${base}${this.topic.id}/update`,
                   form: {
@@ -357,10 +356,10 @@ describe("POST /topics/:id/update", () => {
                   expect(err).toBeNull();
                //#2
                   Topic.findOne({
-                    where: { id: this.topic.id }
+                    where: { id: 1}
                   })
                   .then((topic) => {
-                    expect(topic.title).toBe("JavaScript Frameworks");
+                    expect(topic.title).toBe("JS Frameworks");//confirm title is unchanged
                     done();
                   });
                 });
