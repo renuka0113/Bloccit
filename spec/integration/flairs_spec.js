@@ -20,7 +20,7 @@ describe("routes : flairs", () => {
           done();
         })
         .catch((err) => {
-          console.log(err);
+        //  console.log(err);
           done();
         });
 
@@ -78,7 +78,7 @@ describe("POST /flairs/create", () => {
               done();
             })
             .catch((err) => {
-              console.log(err);
+            //  console.log(err);
               done();
             });
         });

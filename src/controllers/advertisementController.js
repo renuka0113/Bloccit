@@ -3,7 +3,7 @@ const advertisementQueries = require("../db/queries.advertisements.js");
 module.exports = {
   index(req, res, next){     //creating a function called index
   //  res.send("TODO: list all topics");
-  console.log("inside index function");
+  //console.log("inside index function");
 advertisementQueries.getAllAdvertisements((err, advertisements) => {
 
 //#3
@@ -16,12 +16,12 @@ advertisementQueries.getAllAdvertisements((err, advertisements) => {
   },
 
   new(req, res, next){
-    console.log("inside new function");
+    //console.log("inside new function");
      res.render("advertisements/new");
    },
 
    create(req, res, next){
-     console.log("this is create function");
+    // console.log("this is create function");
      let newAdvertisement ={
        title:req.body.title,
        description:req.body.description
@@ -40,7 +40,7 @@ advertisementQueries.getAllAdvertisements((err, advertisements) => {
    },//create
 
    show(req, res, next){
-     console.log("inside show function");
+     //console.log("inside show function");
      advertisementQueries.getAdvertisement(req.params.id,(err, advertisement) => {
        if(err||advertisement==null){
          res.redirect(404, "/");
@@ -51,7 +51,7 @@ advertisementQueries.getAllAdvertisements((err, advertisements) => {
    },//show close
 
    destroy(req, res, next){
-     console.log("inside destroy function");
+  //   console.log("inside destroy function");
      advertisementQueries.deleteAdvertisement(req.params.id, (err, advertisement) => {
        if(err){
          res.redirect(500, `/advertisements/${advertisement.id}`)
@@ -62,7 +62,7 @@ advertisementQueries.getAllAdvertisements((err, advertisements) => {
    },
 
   edit(req, res, next){
-    console.log("inside edit function");
+  //  console.log("inside edit function");
   advertisementQueries.getAdvertisement(req.params.id, (err, advertisement) => {
       if(err || advertisement == null){
         res.redirect(404, "/");
@@ -73,7 +73,7 @@ advertisementQueries.getAllAdvertisements((err, advertisements) => {
   },
 
   update(req, res, next){
-    console.log("inside update function");
+  //  console.log("inside update function");
 
 //#1
   advertisementQueries.updateAdvertisement(req.params.id, req.body, (err, advertisement) => {
